@@ -1,0 +1,33 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^login/?$ login.php [NC,L]
+RewriteRule ^register/?$ register.php [NC,L]
+
+RewriteRule ^validate/?([\d]+)?/?([^/]+)?/?$ validateEmail.php?id=$1&hash=$2 [NC,QSA,L]
+RewriteRule ^resetPassword/?([\d]+)?/?([^/]+)?/?$ resetPassword.php?id=$1&hash=$2 [NC,QSA,L]
+
+
+<IfModule mod_headers.c>
+    Header set Pragma "no-cache"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Expires 0
+</IfModule>
+
+<FilesMatch "\.(txt|js|htm|html|jpeg|jpg|ico|png|css|pdf|mp3|mp4|gif|flv|swf)$">
+    <IfModule mod_expires.c>
+        ExpiresActive Off
+    </IfModule>
+    <IfModule mod_headers.c>
+        Header unset Last-Modified
+        Header unset ETag
+        Header unset Pragma
+        Header unset Cache-Control
+        FileETag None
+        Header set Pragma "no-cache"
+        Header set Cache-Control "max-age=0, no-store, no-cache, must-revalidate"
+        Header set Expires "Thu, 1 Jan 1970 00:00:00 GMT"
+    </IfModule>
+</FilesMatch>
