@@ -12,6 +12,17 @@
 		$res = sqlSelect($C, 'SELECT * FROM users WHERE id=?', 'i', $_SESSION['userID']);
 		if($res && $res->num_rows === 1) {
 			$user = $res->fetch_assoc();
+			$_SESSION['role']= $user['role'];
+			$_SESSION['name']=$user['name'];
+			$_SESSION['email']=$user['email'];
+			if ($user['role'] === 'admin') {
+				$_SESSION["key"] ='sunny7785068889';
+				header("Location: dash.php");
+				exit;
+			}else if ($user['role'] === 'student'){
+				header("Location: account.php");
+				exit;
+			}
 		}
 		else {
 			exit;
@@ -28,12 +39,11 @@
 	<meta charset="UTF-8">
 	<meta name="csrf_token" content="<?php echo createToken(); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Secure Site</title>
+	<title>AOL</title>
 	<link rel="stylesheet" href="<?php echo dirname($_SERVER['PHP_SELF']) . '/style.css'; ?>" />
 </head>
 <body>
 	<div style="text-align: center;">
-		<h1>Secure Site</h1>
 		<div id="errs" class="errorcontainer"></div>
 		<br><br>
 		<h2>Hello <?php echo htmlspecialchars($user['name'], ENT_QUOTES); ?></h2>
