@@ -1,7 +1,10 @@
-<?php 
-session_start();
-if(isset($_SESSION['email'])){
-session_destroy();}
-$ref= @$_GET['q'];
-header("location:$ref");
+<?php
+	require_once 'utils.php';
+	if(isset($_POST['csrf_token']) && validateToken($_POST['csrf_token'])) {
+		session_destroy();
+		echo 0;
+	}
+	else {
+		echo 1;
+	}
 ?>
