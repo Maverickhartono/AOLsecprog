@@ -260,7 +260,7 @@ function passwordResetRequest() {
 	});
 }
 function changePassword() {
-	request('http://localhost/phpdasar/AOL/php/changepassword.php', '#changePasswordForm', function(data) {
+	request('http://localhost/phpdasar/AOLsecprog/php/changepassword.php', '#changePasswordForm', function(data) {
 		document.getElementById('errs').innerHTML = "";
 		var transition = document.getElementById('errs').style.transition;
 		document.getElementById('errs').style.transition = "none";
@@ -273,7 +273,7 @@ function changePassword() {
 			for(var i = 0;i < data.length;++i) {
 				switch(data[i]) {
 					case 0:
-						document.getElementById('errs').innerHTML += '<div>Your password has been reset! You can now <a href="./login">login</a></div>';
+						document.getElementById('errs').innerHTML += '<div>Your password has been reset! You can now <a href="http://localhost/phpdasar/AOLsecprog/login.php">login</a></div>';
 						document.getElementById('changePasswordForm').reset();
 						break;
 					case 1:
