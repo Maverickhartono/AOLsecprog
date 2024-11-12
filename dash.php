@@ -23,7 +23,7 @@ $(function () {
              $(".navbar").addClass("navbar-fixed-top");
         }
 
-        if($(window).scrollTop()<$(".logo").height())
+        if($(window).scrollTop()&lt;$(".logo").height())
         {
              $(".navbar").removeClass("navbar-fixed-top");
         }
@@ -35,7 +35,7 @@ $(function () {
 <div class="header">
 <div class="row">
 <div class="col-lg-6">
-<span class="logo">Exam</span></div>
+<span class="logo">Exam Apps</span></div>
 <?php
  include_once 'dbConnection.php';
 session_start();
@@ -52,7 +52,7 @@ else
 $name = $_SESSION['name'];;
 
 include_once 'dbConnection.php';
-echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="account.php" class="log log1">'.$name.'</a>&nbsp;|&nbsp;<a href="logout.php?q=account.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
+echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="dash.php?q=0" class="log log1">'.$name.'</a>&nbsp;|&nbsp;<a href="logout.php?q=account.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
 }?>
 
 </div></div>
@@ -85,7 +85,6 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
             <li><a href="dash.php?q=5">Remove Quiz</a></li>
 			
           </ul>
-        </li><li class="pull-right"> <a href="logout.php?q=account.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
 		
       </ul>
           </div><!-- /.navbar-collapse -->
